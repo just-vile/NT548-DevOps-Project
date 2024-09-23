@@ -52,7 +52,7 @@ jobs:
         steps:
             -   name: Checkout
                 uses: actions/checkout@v3
-            -   name: Set ip env variable
+            -   name: Set IP env variable
                 run: echo SERVER_PUBLIC_IP=${{ needs.deploy-infra.outputs.SERVER_PUBLIC_IP }} >> $GITHUB_ENV
             -   name: Login to AWS ECR
                 id: login-ecr
@@ -68,7 +68,7 @@ jobs:
                 working-directory: ./nodeapp
             -   name: Deploy docker image to EC2
                 env: 
-                    REGISTRY: ${{ steps.login-ecr.outputs.REGISTRY}}
+                    REGISTRY: ${{ steps.login-ecr.outputs.registry }}
                     REPOSITORY: nt548-devops-project
                     IMAGE_TAG: ${{ github.sha }}
                     AWS_DEFAULT_REGION: ap-southeast-2
