@@ -29,7 +29,7 @@ jobs:
             -   name: Terraform Plan
                 id: plan
                 run: |-
-                    terraform plan \
+                    terraform -chdir="./terraform" plan \
                     -var="region=ap-southeast-2" \
                     -var="public_key=$PUBLIC_SSH_KEY" \
                     -var="private_key=$PRIVATE_SSH_KEY" \
