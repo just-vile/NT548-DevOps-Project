@@ -10,7 +10,7 @@ env:
     TF_STATE_BUCKET_NAME: ${{ secrets.AWS_TF_STATE_BUCKET_NAME }}
     PRIVATE_SSH_KEY: ${{ secrets.AWS_SSH_KEY_PRIVATE }}
     PUBLIC_SSH_KEY: ${{ secrets.AWS_SSH_KEY_PUBLIC }}
-    AWS_REGION: us-east-1
+    AWS_REGION: ap-southeast-2
 
 jobs:
     deploy-infra:
@@ -29,7 +29,7 @@ jobs:
               id: plan
               run: |-
                 terraform plan \
-                -var="region=us-east-1" \
+                -var="region=ap-southeast-2" \
                 -var="public_key=$PUBLIC_SSH_KEY" \
                 -var="private_key=$PRIVATE_SSH_KEY" \
                 -var="key_name=deployer-key" \ 
