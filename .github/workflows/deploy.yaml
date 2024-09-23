@@ -60,7 +60,7 @@ jobs:
             -   name: Build, push docker image
                 env:
                     REGISTRY: ${{ steps.login-ecr.outputs.REGISTRY}}
-                    REPOSITORY: example-node-app
+                    REPOSITORY: NT548-DevOps-Project
                     IMAGE_TAG: ${{ github.sha }}
                 run: |-
                     docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
@@ -69,7 +69,7 @@ jobs:
             -   name: Deploy docker image to EC2
                 env: 
                     REGISTRY: ${{ steps.login-ecr.outputs.REGISTRY}}
-                    REPOSITORY: example-node-app
+                    REPOSITORY: NT548-DevOps-Project
                     IMAGE_TAG: ${{ github.sha }}
                     AWS_DEFAULT_REGION: ap-southeast-2
                 uses: appleboy/ssh-action@master
