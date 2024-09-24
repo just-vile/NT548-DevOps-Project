@@ -19,7 +19,7 @@ jobs:
             SERVER_PUBLIC_IP: ${{ steps.set-ip.outputs.instance_public_ip}}
         steps:
             -   name: Checkout
-                uses: actions/checkout@v2
+                uses: actions/checkout@v2 
             -   name: setup Terraform
                 uses: hashicorp/setup-terraform@v1
                 with: 
@@ -53,7 +53,7 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v3
             -   name: Set IP env variable
-                run: echo SERVER_PUBLIC_IP=${{ needs.deploy-infra.outputs.SERVER_PUBLIC_IP }} >> $GITHUB_ENV
+                run: echo SERVER_PUBLIC_IP=${{ needs.deploy-infra.SERVER_PUBLIC_IP }} >> $GITHUB_ENV
             -   name: Login to AWS ECR
                 id: login-ecr
                 uses: aws-actions/amazon-ecr-login@v1
